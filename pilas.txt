@@ -1,0 +1,34 @@
+import java.util.Stack;
+
+// Implementación de pila usando una lista
+class Pila {
+    private Stack<Integer> items;
+
+    public Pila() {
+        this.items = new Stack<>();
+    }
+
+    public void push(int elemento) {
+        this.items.push(elemento);
+    }
+
+    public int pop() {
+        return this.items.pop();
+    }
+
+    public boolean esVacia() {
+        return this.items.isEmpty();
+    }
+}
+
+// Uso de la pila
+public class Main {
+    public static void main(String[] args) {
+        Pila pila = new Pila();
+        pila.push(1);
+        pila.push(2);
+        pila.push(3);
+        System.out.println(pila.pop()); // Imprimirá 3
+        System.out.println(pila.esVacia()); // Imprimirá false
+    }
+}

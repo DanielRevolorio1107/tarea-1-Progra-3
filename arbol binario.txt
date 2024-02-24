@@ -1,0 +1,63 @@
+// Implementación de árbol binario
+class Nodo {
+    int valor;
+    Nodo izquierda, derecha;
+
+    public Nodo(int valor) {
+        this.valor = valor;
+        izquierda = derecha = null;
+    }
+}
+
+class ArbolBinario {
+    Nodo raiz;
+
+    public ArbolBinario(int valorRaiz) {
+        raiz = new Nodo(valorRaiz);
+    }
+
+    private Nodo insertarRecursivo(Nodo nodo, int valor) {
+        if (nodo == null) {
+            return new Nodo(valor);
+        }
+
+        if (valor < nodo.valor) {
+            nodo.izquierda = insertarRecursivo(nodo.izquierda, valor);
+        } else if (valor > nodo.valor) {
+            nodo.derecha = insertarRecursivo(nodo.derecha, valor);
+        }
+
+        return nodo;
+    }
+
+    public void insertar(int valor) {
+        raiz = insertarRecursivo(raiz, valor);
+    }
+
+    private void imprimirInOrdenRecursivo(Nodo nodo) {
+        if (nodo != null) {
+            imprimirInOrdenRecursivo(nodo.izquierda);
+            System.out.println(nodo.valor);
+            imprimirInOrdenRecursivo(nodo.derecha);
+        }
+    }
+
+    public void imprimirInOrden() {
+        imprimirInOrdenRecursivo(raiz);
+    }
+}
+
+// Uso del árbol binario
+public class Main {
+    public static void main(String[] args) {
+        ArbolBinario arbol = new ArbolBinario(5);
+        arbol.insertar(3);
+        arbol.insertar(7);
+        arbol.insertar(2);
+        arbol.insertar(4);
+        arbol.insertar(6);
+        arbol.insertar(8);
+
+        arbol.imprimirInOrden();
+    }
+}
